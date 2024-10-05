@@ -1,0 +1,53 @@
+@use '../../sass/variables' as *;
+
+.navbar {
+    background-color: $black;
+    color: white;
+    padding: 1rem 2rem;
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+    height: 65px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  
+    .navbar-container {
+      display: flex;
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+      width: 100%;
+    }
+  
+    .navbar-logo {
+      font-size: 1.2rem;
+      font-weight: bold;
+      text-transform: uppercase;
+      text-decoration: none;
+      color: #fff;
+  
+    }
+  
+    .navbar-links {
+      display: flex;
+      gap: 2rem;
+        margin: 0 auto;
+      a {
+        text-decoration: none;
+        color: #fff;
+        font-weight: 400;
+        font-size: 1rem;
+  
+        &:hover {
+          color: #ff5733;
+        }
+      }
+    }
+  
+    .menu-icon {
+        background-color: $black;
+        color: white;
+  
+    }
+}
