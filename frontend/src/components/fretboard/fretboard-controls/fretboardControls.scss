@@ -1,0 +1,11 @@
+
+
+.fretboard-controls {
+    margin-left: auto;
+    display: flex;
+    gap: 1rem;
+    padding: 1rem 0;
+    .control {
+        cursor: pointer;
+    }
+}

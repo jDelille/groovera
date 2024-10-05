@@ -7,6 +7,7 @@ import NoteButton from "./note-button/NoteButton";
 import { useNoteConverter } from "../../hooks/useNoteConverter";
 import "./fretboard.scss";
 import { getChordNameFromShape } from "../../hooks/useChordNameFromShape";
+import FretboardControls from "./fretboard-controls/FretboardControls";
 
 type FretboardProps = {
     selectedShape: string;
@@ -70,6 +71,7 @@ const Fretboard: React.FC<FretboardProps> = ({ selectedShape}) => {
           );
         })}
       </div>
+      <FretboardControls />
     </div>
   );
 };

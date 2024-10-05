@@ -3,21 +3,22 @@
 .navbar {
     background-color: $black;
     color: white;
-    padding: 1rem 2rem;
-    position: fixed;
+    padding: 1rem 0rem;
+    position: relative;
     width: 100%;
     z-index: 1000;
     height: 65px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-  
+    max-width: $contentWidth;
+    margin: 0 auto;
+    
     .navbar-container {
       display: flex;
       align-items: center;
-      max-width: 1200px;
-      margin: 0 auto;
       width: 100%;
+      
     }
   
     .navbar-logo {
