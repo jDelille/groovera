@@ -10,7 +10,9 @@
 
 .app {
     background-color: #262626;
-    height: 100vh;
+    min-height: 100vh;
     position: relative;
+    height: fit-content;
+    padding-bottom: 2rem;
 
 }

@@ -1,9 +1,8 @@
-@use '../../sass/variables' as *;
+@use '../../../sass/variables' as *;
 
 .caged-controls {
     width: 100%;
     height: 75px;
-    width: $contentWidth;
     margin: 1rem auto;
 
 }

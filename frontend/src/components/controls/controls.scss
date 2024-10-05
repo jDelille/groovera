@@ -1,0 +1,6 @@
+@use '../../sass/variables' as *;
+
+.controls {
+    width: $contentWidth;
+    margin: 1rem auto;
+}
