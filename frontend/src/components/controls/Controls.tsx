@@ -18,6 +18,9 @@ const Controls: React.FC<ControlsProps> = ({
   setActiveFretboard,
   removeFretboard
 }) => {
+
+
+
   return (
     <div className="controls">
       <CagedControls setSelectedShape={setSelectedShape} />

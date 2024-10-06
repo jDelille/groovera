@@ -5,24 +5,24 @@ import Controls from "./components/controls/Controls";
 import "./sass/global.scss";
 
 const App: React.FC = () => {
-  const [fretboards, setFretboards] = useState<number[]>([0]); // Initial fretboard
-  const [activeFretboard, setActiveFretboard] = useState<number>(0); // Tracks active fretboard
-  const [shapes, setShapes] = useState<string[]>(["A Shape"]); // Shapes for each fretboard
+  const [fretboards, setFretboards] = useState<number[]>([0]); 
+  const [activeFretboard, setActiveFretboard] = useState<number>(0); 
+  const [shapes, setShapes] = useState<string[]>(["A Shape"]); 
 
   const addFretboard = () => {
-    setFretboards((prevFretboards) => [
-      ...prevFretboards,
-      prevFretboards.length,
-    ]);
-    setShapes((prevShapes) => [...prevShapes, "A Shape"]); // Add default shape
+    setFretboards((prevFretboards) => {
+      const newFretboards = [...prevFretboards, prevFretboards.length];
+      setShapes((prevShapes) => [...prevShapes, "A Shape"]); // Add a default shape
+      return newFretboards;
+    });
   };
 
   const removeFretboard = () => {
     setFretboards((prevFretboards) => {
       if (prevFretboards.length > 1) {
         const newFretboards = prevFretboards.slice(0, -1);
-        setShapes((prevShapes) => prevShapes.slice(0, -1)); // Remove shape as well
-        return newFretboards; // Remove the last fretboard
+        setShapes((prevShapes) => prevShapes.slice(0, -1)); 
+        return newFretboards; 
       }
       return prevFretboards;
     });
@@ -32,7 +32,7 @@ const App: React.FC = () => {
     const setSelectedShape = (shape: string) => {
       setShapes((prevShapes) =>
         prevShapes.map((s, index) =>
-          index === activeFretboard ? shape : s // Update only the active fretboard's shape
+          index === activeFretboard ? shape : s 
         )
       );
     };
@@ -54,7 +54,9 @@ const App: React.FC = () => {
           <Fretboard
             key={index}
             selectedShape={shapes[index]} 
+            setActiveFretboard={setActiveFretboard}
             active={fretboards.length > 1 && index === activeFretboard}
+            index={index}
           />
         ))}
       </div>

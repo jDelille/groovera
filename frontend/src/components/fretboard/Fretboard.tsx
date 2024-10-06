@@ -11,27 +11,30 @@ import "./fretboard.scss";
 type FretboardProps = {
     selectedShape: string;
     active: boolean;
+    setActiveFretboard: (index: number) => void;
+    index?: number;
 
 };
-const Fretboard: React.FC<FretboardProps> = ({ selectedShape, active}) => {
+const Fretboard: React.FC<FretboardProps> = ({ selectedShape, active, setActiveFretboard, index}) => {
   const [isFlat, setIsFlat] = useState(false);
 
   let [selectedChord, setSelectedChord] =
     useState<any>(`A Major (${selectedShape})`);
 
-    console.log(selectedShape)
-
   const { tunings } = FretboardConstants;
   const notes = isFlat
     ? FretboardConstants.notesFlat
     : FretboardConstants.notesSharp;
-  const numberOfFrets = 21;
+  const numberOfFrets = 24;
 
   const { chordNotes } = useChordRenderer(selectedChord);
 
   const convertNoteName = useNoteConverter(isFlat);
 
   useEffect(() => {
+    if(!selectedShape) {
+      return;
+    }
     setSelectedChord(getChordNameFromShape(selectedShape));
   }, [selectedShape]);
 
@@ -39,7 +42,7 @@ const Fretboard: React.FC<FretboardProps> = ({ selectedShape, active}) => {
     <div className="fretboard-container">
       <FretNumbers totalFrets={numberOfFrets} startFret={0} endFret={10} />
       
-      <div className={active ? "active-fretboard" : "fretboard"}>
+      <div className={active ? "active-fretboard" : "fretboard"} onClick={() => setActiveFretboard(index as number)}>
         {Array.from({ length: 6 }, (_, string) => {
           // eslint-disable-next-line @typescript-eslint/no-shadow
           const frets = Array.from({ length: numberOfFrets }, (_, fret) => {

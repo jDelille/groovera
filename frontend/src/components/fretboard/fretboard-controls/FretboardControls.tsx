@@ -7,6 +7,11 @@ type FretboardControlsProps = {
  
  }
 const FretboardControls: React.FC<FretboardControlsProps> = () => {
+
+  const printFretboard = () => {
+    window.print();
+}
+
   return (
     <div className="fretboard-controls">
       <div className="control">
@@ -15,7 +20,7 @@ const FretboardControls: React.FC<FretboardControlsProps> = () => {
       <div className="control">
         <FlipStringIcon color='white' size={18} />
       </div>
-      <div className="control">
+      <div className="control" onClick={printFretboard}>
         <PrinterIcon color='white' size={18}/>
       </div>
     </div>
