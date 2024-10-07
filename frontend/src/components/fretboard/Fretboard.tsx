@@ -33,10 +33,15 @@ const Fretboard: React.FC<FretboardProps> = ({ selectedKey, selectedShape, activ
   const convertNoteName = useNoteConverter(isFlat);
 
   useEffect(() => {
-    if(!selectedShape) {
+    if (!selectedShape) {
+      console.warn("Shape not selected");
       return;
     }
-    setSelectedChord(getChordNameFromShape(selectedKey, selectedShape));
+    try {
+      setSelectedChord(getChordNameFromShape(selectedKey, selectedShape));
+    } catch (error) {
+      console.error("Error setting chord:", error);
+    }
   }, [selectedShape]);
 
   return (
@@ -55,6 +60,7 @@ const Fretboard: React.FC<FretboardProps> = ({ selectedKey, selectedShape, activ
             );
             const isActiveNote = !!chordNote;
             const isOpenString = chordNote?.openNote || false;
+            const isRootNote = chordNote?.interval === "root";
 
             return (
               <div className="fret">
@@ -63,6 +69,7 @@ const Fretboard: React.FC<FretboardProps> = ({ selectedKey, selectedShape, activ
                     note={chordNote ? chordNote.note : notes[noteIndex]}
                     isActive={isActiveNote}
                     isOpenString={isOpenString}
+                    isRootNote={isRootNote}
                     onClick={() => console.log("Note clicked:", note)}
                   />
                 </div>

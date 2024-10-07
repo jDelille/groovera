@@ -33,7 +33,6 @@ export const ChordData: Record<
     { note: "C#", string: 1, fret: 2, interval: "major 3rd" },
     { note: "E", string: 0, fret: 0, interval: "5th", openNote: true },
     { note: "A", string: 4, fret: 0, interval: "root", openNote: true },
-    { note: "E", string: 5, fret: 0, interval: "5th", openNote: true },
   ],
   "A Major (G Shape)": [
     { note: "A", string: 2, fret: 2, interval: "root" },
@@ -66,7 +65,6 @@ export const ChordData: Record<
     { note: "B", string: 5, fret: 14, interval: "root" },
   ],
   "B Major (A Shape)": [
-    { note: "F#", string: 5, fret: 2, interval: "perfect 5th" },
     { note: "B", string: 4, fret: 2, interval: "root" },
     { note: "F#", string: 3, fret: 4, interval: "perfect 5th" },
     { note: "B", string: 2, fret: 4, interval: "root" },

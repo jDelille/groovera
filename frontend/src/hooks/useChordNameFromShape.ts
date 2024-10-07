@@ -3,7 +3,7 @@ import { ChordName } from "../fretboardData/CagedChordData";
 // Accepts a key and a shape, and returns the appropriate chord name.
 export const getChordNameFromShape = (key: string, shape: string, isMinor: boolean = false): ChordName => {
   const chordQuality = isMinor ? "Minor" : "Major";
-  const chordBase = key.charAt(0).toUpperCase() + key.slice(1).toLowerCase(); // Capitalize the first letter of the key
+  const chordBase = key?.charAt?.(0)?.toUpperCase() + key?.slice(1).toLowerCase(); // Capitalize the first letter of the key
 
   switch (shape) {
     case "C Shape":

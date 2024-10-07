@@ -5,16 +5,23 @@ import Controls from "./components/controls/Controls";
 import "./sass/global.scss";
 
 const App: React.FC = () => {
-  const [fretboards, setFretboards] = useState<number[]>([0]); 
-  const [activeFretboard, setActiveFretboard] = useState<number>(0); 
-  const [shapes, setShapes] = useState<string[]>(["A Shape"]); 
+  const [fretboards, setFretboards] = useState<number[]>([0]);
+  const [activeFretboard, setActiveFretboard] = useState<number>(0);
+  const [shapes, setShapes] = useState<string[]>(["A Shape"]);
   const [keys, setKeys] = useState<string[]>(["A"]);
 
   const addFretboard = () => {
     setFretboards((prevFretboards) => {
-      const newFretboards = [...prevFretboards, prevFretboards.length];
-      setShapes((prevShapes) => [...prevShapes, "A Shape"]); // Add a default shape
-      return newFretboards;
+      const newFretboardId = prevFretboards.length; // Use a simple increment for new ID
+      setShapes((prevShapes) => ({
+        ...prevShapes,
+        [newFretboardId]: "A Shape", // Initialize with a default shape
+      }));
+      setKeys((prevKeys) => ({
+        ...prevKeys,
+        [newFretboardId]: "A", // Initialize with a default key
+      }));
+      return [...prevFretboards, newFretboardId];
     });
   };
 
@@ -22,38 +29,50 @@ const App: React.FC = () => {
     setFretboards((prevFretboards) => {
       if (prevFretboards.length > 1) {
         const newFretboards = prevFretboards.slice(0, -1);
-        setShapes((prevShapes) => prevShapes.slice(0, -1)); 
-        return newFretboards; 
+        
+        // Remove the shape for the last fretboard
+        setShapes((prevShapes) => {
+          const newShapes = { ...prevShapes };
+          delete newShapes[prevFretboards.length - 1];
+          return newShapes;
+        });
+  
+        // Remove the key for the last fretboard
+        setKeys((prevKeys) => {
+          const newKeys = { ...prevKeys };
+          delete newKeys[prevFretboards.length - 1];
+          return newKeys;
+        });
+  
+        return newFretboards;
       }
       return prevFretboards;
     });
   };
 
-    // Update the selected shape for the active fretboard
-    const setSelectedShape = (shape: string) => {
-      setShapes((prevShapes) =>
-        prevShapes.map((s, index) =>
-          index === activeFretboard ? shape : s 
-        )
-      );
-    };
+  // Update the selected shape for the active fretboard
+  const setSelectedShape = (fretboardId: number, shape: string) => {
+    setShapes((prevShapes) => ({
+      ...prevShapes,
+      [fretboardId]: shape, // Update the shape for the specific fretboard
+    }));
+  };
 
-     // Update the selected key for the active fretboard
-     const setSelectedKey = (key: string) => {
-      setKeys((prevKeys) =>
-        prevKeys.map((k, index) =>
-          index === activeFretboard ? key : k
-        )
-      );
-    };
-
+  const setSelectedKey = (fretboardId: number, key: string) => {
+    setKeys((prevKeys) => ({
+      ...prevKeys,
+      [fretboardId]: key, // Update the key for the specific fretboard
+    }));
+  };
 
   return (
     <div className="app">
       <Navbar />
       <Controls
-      setSelectedKey={setSelectedKey}
-        setSelectedShape={setSelectedShape}
+        setSelectedKey={(key: string) => setSelectedKey(activeFretboard, key)}
+        setSelectedShape={(shape: string) =>
+          setSelectedShape(activeFretboard, shape)
+        }
         addFretboard={addFretboard}
         removeFretboard={removeFretboard}
         fretboards={fretboards.length}
@@ -61,10 +80,10 @@ const App: React.FC = () => {
         setActiveFretboard={setActiveFretboard}
       />
       <div className="fretboards">
-        {fretboards.map((_, index) => (
+        {fretboards.map((fretboardId, index) => (
           <Fretboard
-            key={index}
-            selectedShape={shapes[index]} 
+            key={fretboardId}
+            selectedShape={shapes[index]}
             setActiveFretboard={setActiveFretboard}
             active={fretboards.length > 1 && index === activeFretboard}
             index={index}

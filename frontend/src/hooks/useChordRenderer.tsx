@@ -2,7 +2,15 @@ import { useState, useEffect } from "react";
 import { ChordData, ChordName } from "../fretboardData/CagedChordData";
 
 const useChordRenderer = (chordName: ChordName) => {
-  const [chordNotes, setChordNotes] = useState<{ note: string; string: number; fret: number, openNote?: boolean }[]>([]);
+  const [chordNotes, setChordNotes] = useState<
+    {
+      note: string;
+      string: number;
+      fret: number;
+      openNote?: boolean;
+      interval: string;
+    }[]
+  >([]);
 
   useEffect(() => {
     if (ChordData[chordName]) {
@@ -14,7 +22,10 @@ const useChordRenderer = (chordName: ChordName) => {
 
   const renderChord = () => {
     return chordNotes.map(({ note, string, fret }) => (
-      <div key={`${string}-${fret}`} className={`fretboard-note string-${string} fret-${fret}`}>
+      <div
+        key={`${string}-${fret}`}
+        className={`fretboard-note string-${string} fret-${fret}`}
+      >
         <button className="note-button">{note}</button>
       </div>
     ));
