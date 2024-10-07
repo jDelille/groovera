@@ -3,4 +3,8 @@
 .controls {
     width: $contentWidth;
     margin: 1rem auto;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    margin-bottom: 2rem;
 }

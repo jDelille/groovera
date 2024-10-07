@@ -2,6 +2,7 @@ import React from "react";
 import CagedControls from "./caged-controls/CagedControls";
 import "./controls.scss";
 import KeyControls from "./key-controls/KeyControls";
+import NoteControls from "./note-controls/NoteControls";
 
 type ControlsProps = {
   setSelectedShape: (shape: string) => void;
@@ -27,10 +28,11 @@ const Controls: React.FC<ControlsProps> = ({
   return (
     <div className="controls">
       <KeyControls setSelectedKey={setSelectedKey} />
-      <CagedControls setSelectedShape={setSelectedShape} />
-      <button onClick={addFretboard}>Add fretboard</button>
-      <button onClick={removeFretboard}>Remove fretboard</button>
-      <div className="fretboard-buttons">
+      <NoteControls />
+      {/* <CagedControls setSelectedShape={setSelectedShape} /> */}
+      {/* <button onClick={addFretboard}>Add fretboard</button> */}
+      {/* <button onClick={removeFretboard}>Remove fretboard</button> */}
+      {/* <div className="fretboard-buttons">
         {Array.from({ length: fretboards }, (_, index) => (
           <button
             key={index}
@@ -40,7 +42,7 @@ const Controls: React.FC<ControlsProps> = ({
             Fretboard {index + 1}
           </button>
         ))}
-      </div>
+      </div> */}
     </div>
   );
 };

@@ -1,24 +1,17 @@
 import React from "react";
 import "./cagedControls.scss";
+import useModalStore from "../../../hooks/useModal";
 
 type CagedControlsProps = {
   setSelectedShape: (shape: string) => void;
 };
 
 const CagedControls: React.FC<CagedControlsProps> = ({ setSelectedShape }) => {
-  const shapes: string[] = ["C Shape", "A Shape", "G Shape", "E Shape", "D Shape"];
+  const openModal = useModalStore((state) => state.openModal);
 
   return (
     <div className="caged-controls">
-      {shapes.map((shape) => (
-        <button
-          key={shape} // Ensure each button has a unique key
-          onClick={() => setSelectedShape(shape)}
-          aria-label={`Select ${shape}`} // Improve accessibility
-        >
-          {shape}
-        </button>
-      ))}
+      <button onClick={() => openModal('cagedModal')}>Caged System</button>
     </div>
   );
 };

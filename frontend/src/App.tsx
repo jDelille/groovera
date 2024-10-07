@@ -3,6 +3,9 @@ import Fretboard from "./components/fretboard/Fretboard";
 import Navbar from "./components/navbar/Navbar";
 import Controls from "./components/controls/Controls";
 import "./sass/global.scss";
+import CurrentDetails from "./components/current-details/CurrentDetails";
+import CagedModal from "./components/modals/CagedModal";
+import MainControls from "./components/controls/main-controls/MainControls";
 
 const App: React.FC = () => {
   const [fretboards, setFretboards] = useState<number[]>([0]);
@@ -67,6 +70,7 @@ const App: React.FC = () => {
 
   return (
     <div className="app">
+      <CagedModal />
       <Navbar />
       <Controls
         setSelectedKey={(key: string) => setSelectedKey(activeFretboard, key)}
@@ -91,6 +95,9 @@ const App: React.FC = () => {
           />
         ))}
       </div>
+      <MainControls />
+      <CurrentDetails />
+  
     </div>
   );
 };

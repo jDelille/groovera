@@ -1,0 +1,15 @@
+@use '../../../sass/variables' as *;
+
+.controls-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: .75rem;
+    color: $lighterGray;
+    font-weight: 500;
+    .note-controls {
+        background-color: $offWhite;
+        height: 56px;
+        border-radius: 6px;
+        width: 100%;
+    }
+}
