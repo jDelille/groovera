@@ -1,6 +1,6 @@
 import React from "react";
 import useModalStore from "../../hooks/useModal";
-import './modal.scss';
+import "./modal.scss";
 import Toggle from "../toggle/Toggle";
 
 type CagedModalProps = {};
@@ -14,16 +14,26 @@ const CagedModal: React.FC<CagedModalProps> = () => {
     return null;
   }
 
-  const shapes: string[] = ["C Shape", "A Shape", "G Shape", "E Shape", "D Shape"];
+  const shapes: string[] = [
+    "C Shape",
+    "A Shape",
+    "G Shape",
+    "E Shape",
+    "D Shape",
+  ];
 
   return (
     <div className="overlay">
       <div className="modal">
         <div className="title">
-            <p>Caged</p>
+          <p>Caged</p>
+          <button onClick={() => closeModal("cagedModal")} className="close-modal-btn">X</button>
         </div>
         <div className="description">
-            <p>Choose a CAGED position to view that specific shape on the fretboard.</p>
+          <p>
+            Choose a CAGED position to view that specific shape on the
+            fretboard.
+          </p>
         </div>
         {/* <div className="shapes">
         {shapes.map((shape) => (
@@ -38,7 +48,7 @@ const CagedModal: React.FC<CagedModalProps> = () => {
         </div> */}
 
         <Toggle shapes={shapes} />
-       
+
         {/* <button onClick={() => closeModal('cagedModal')}>Close Modal</button> */}
       </div>
     </div>

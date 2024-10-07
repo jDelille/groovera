@@ -1,3 +1,5 @@
+@use '../../sass/variables' as *;
+
 .toggle {
     display: flex;
     align-items: center;
@@ -14,7 +16,7 @@
         position: relative; 
         padding-left: 30px; 
         cursor: pointer; 
-        color: white; 
+        color: $grayText; 
         font-size: 16px; 
         font-weight: 500;
       }
@@ -31,7 +33,7 @@
     transform: translateY(-55%); // Adjust for height
     width: 14px; // Size of the circle
     height: 14px; // Size of the circle
-    border: 2px solid #007BFF; // Circle border color
+    border: 2px solid $accent; // Circle border color
     border-radius: 50%; // Make it circular
     background-color: white; // Background color
     transition: background-color 0.2s; // Smooth transition for background
@@ -39,5 +41,5 @@
   
   // Change the appearance when the radio is checked
   .radio:checked + label::before {
-    background-color: #007BFF; // Change to active color
+    background-color: $accent; // Change to active color
   }

@@ -20,9 +20,6 @@ const Navbar: React.FC = () => {
           <a href="#about">About</a>
           <a href="#contact">Contact</a>
         </div>
-        <div className="menu-icon" onClick={toggleMenu}>
-          <p>Settings</p>
-        </div>
       </div>
     </nav>
   );

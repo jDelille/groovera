@@ -1,5 +1,6 @@
 import React from "react";
 import './keyControls.scss';
+import Type from "./Type";
 
 type KeyControlsProps = {
   setSelectedKey: (key: string) => void;
@@ -12,11 +13,7 @@ const KeyControls: React.FC<KeyControlsProps> = ({ setSelectedKey }) => {
     <div className="controls-wrapper">
       <p>Key</p>
     <div className="key-controls">
-      <div className="type">
-        <p>N</p>
-        <p>b</p>
-        <p>#</p>
-      </div>
+      <Type />
       {keys.map((key) => (
         <button
           key={key} 

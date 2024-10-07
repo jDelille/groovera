@@ -14,7 +14,7 @@
     overflow-y: scroll;
     top: 0;
     .modal {
-        background-color: $black;
+        background-color: $white;
         box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
           0 8px 10px -6px rgba(0, 0, 0, 0.1);
         width: 36rem;
@@ -24,19 +24,29 @@
         display: flex;
         flex-direction: column;
         gap: 0px;
+        color: $black;
         .shapes {
             display: flex;
             flex-direction: column;
             gap: 5px;
         }
-        button {
-            @include button();
+        .close-modal-btn {
+            background-color: none;
+            border: none;
+            outline: none;
+            background-color: transparent;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
         }
         .title {
-            color: white;
+            color: $black;
             margin-bottom: 5px;
             font-size: 20px;
             font-weight: 500;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
         }
         .description {
             color: $lighterGray;

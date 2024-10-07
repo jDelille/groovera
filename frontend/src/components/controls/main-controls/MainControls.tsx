@@ -1,10 +1,15 @@
 import React from 'react';
 import './mainControls.scss';
+import useModalStore from '../../../hooks/useModal';
 
 type MainControlsProps = {
  
  }
 const MainControls: React.FC<MainControlsProps> = () => {
+
+    const openModal = useModalStore((state) => state.openModal);
+
+
   return (
     <div className="main-controls">
         <div className="row">
@@ -14,7 +19,7 @@ const MainControls: React.FC<MainControlsProps> = () => {
         <div className="control">
             Major Scale
         </div>
-        <div className="control">
+        <div className="control" onClick={() => openModal('cagedModal')}>
             CAGED
         </div>
         </div>

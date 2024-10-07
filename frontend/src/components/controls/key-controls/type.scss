@@ -1,0 +1,27 @@
+@use "../../../sass/variables" as *;
+
+.type {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  padding: 0 1rem;
+  padding-right: 2rem;
+  .option {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    cursor: pointer;
+  }
+  .circle,
+  .active {
+    border: 1px solid $grayText;
+    width: 13px;
+    height: 13px;
+    border-radius: 50%;
+  }
+
+  .active {
+    background-color: cornflowerblue;
+    border: none;
+  }
+}
