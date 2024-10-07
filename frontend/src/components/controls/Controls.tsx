@@ -1,9 +1,11 @@
 import React from "react";
 import CagedControls from "./caged-controls/CagedControls";
 import "./controls.scss";
+import KeyControls from "./key-controls/KeyControls";
 
 type ControlsProps = {
   setSelectedShape: (shape: string) => void;
+  setSelectedKey: (key: string) => void;
   addFretboard: () => void;
   fretboards: number;
   activeFretboard: number;
@@ -16,13 +18,15 @@ const Controls: React.FC<ControlsProps> = ({
   fretboards,
   activeFretboard,
   setActiveFretboard,
-  removeFretboard
+  removeFretboard,
+  setSelectedKey
 }) => {
 
 
 
   return (
     <div className="controls">
+      <KeyControls setSelectedKey={setSelectedKey} />
       <CagedControls setSelectedShape={setSelectedShape} />
       <button onClick={addFretboard}>Add fretboard</button>
       <button onClick={removeFretboard}>Remove fretboard</button>

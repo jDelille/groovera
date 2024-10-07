@@ -8,6 +8,7 @@ const App: React.FC = () => {
   const [fretboards, setFretboards] = useState<number[]>([0]); 
   const [activeFretboard, setActiveFretboard] = useState<number>(0); 
   const [shapes, setShapes] = useState<string[]>(["A Shape"]); 
+  const [keys, setKeys] = useState<string[]>(["A"]);
 
   const addFretboard = () => {
     setFretboards((prevFretboards) => {
@@ -37,11 +38,21 @@ const App: React.FC = () => {
       );
     };
 
+     // Update the selected key for the active fretboard
+     const setSelectedKey = (key: string) => {
+      setKeys((prevKeys) =>
+        prevKeys.map((k, index) =>
+          index === activeFretboard ? key : k
+        )
+      );
+    };
+
 
   return (
     <div className="app">
       <Navbar />
       <Controls
+      setSelectedKey={setSelectedKey}
         setSelectedShape={setSelectedShape}
         addFretboard={addFretboard}
         removeFretboard={removeFretboard}
@@ -57,6 +68,7 @@ const App: React.FC = () => {
             setActiveFretboard={setActiveFretboard}
             active={fretboards.length > 1 && index === activeFretboard}
             index={index}
+            selectedKey={keys[index]}
           />
         ))}
       </div>

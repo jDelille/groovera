@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { ChordData, ChordName } from "../fretboardData/ChordData";
+import { ChordData, ChordName } from "../fretboardData/CagedChordData";
 
 const useChordRenderer = (chordName: ChordName) => {
   const [chordNotes, setChordNotes] = useState<{ note: string; string: number; fret: number, openNote?: boolean }[]>([]);

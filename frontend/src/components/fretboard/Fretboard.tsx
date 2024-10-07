@@ -13,13 +13,14 @@ type FretboardProps = {
     active: boolean;
     setActiveFretboard: (index: number) => void;
     index?: number;
+    selectedKey: string;
 
 };
-const Fretboard: React.FC<FretboardProps> = ({ selectedShape, active, setActiveFretboard, index}) => {
+const Fretboard: React.FC<FretboardProps> = ({ selectedKey, selectedShape, active, setActiveFretboard, index}) => {
   const [isFlat, setIsFlat] = useState(false);
 
   let [selectedChord, setSelectedChord] =
-    useState<any>(`A Major (${selectedShape})`);
+    useState<any>(`A Minor (${selectedShape})`);
 
   const { tunings } = FretboardConstants;
   const notes = isFlat
@@ -35,7 +36,7 @@ const Fretboard: React.FC<FretboardProps> = ({ selectedShape, active, setActiveF
     if(!selectedShape) {
       return;
     }
-    setSelectedChord(getChordNameFromShape(selectedShape));
+    setSelectedChord(getChordNameFromShape(selectedKey, selectedShape));
   }, [selectedShape]);
 
   return (
